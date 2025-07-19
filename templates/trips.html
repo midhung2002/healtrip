@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Trips - HealTrip</title>
+</head>
+<body>
+    <h1>Available Healing Trips</h1>
+
+    {% for trip in trips %}
+        <div style="border:1px solid #ccc; padding:10px; margin:10px 0;">
+            <h2>{{ trip.name }}</h2>
+            <p><strong>Location:</strong> {{ trip.location }}</p>
+            <p><strong>Description:</strong> {{ trip.description }}</p>
+            <p><strong>Price:</strong> ₹{{ trip.price }}</p>
+            <form method="POST" action="/book/{{ trip.id }}">
+                <button type="submit">Book Now</button>
+            </form>
+        </div>
+    {% endfor %}
+</body>
+</html>
+

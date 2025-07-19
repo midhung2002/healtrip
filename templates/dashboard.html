@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | HealTrip</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body class="dashboard-body">
+
+    <header class="dashboard-header" role="banner">
+        <h1>Welcome to HealTrip ✈️</h1>
+        <a href="/logout" class="logout-btn" aria-label="Logout from your account">Logout</a>
+    </header>
+
+    <main class="dashboard-main" role="main">
+        <h2 class="dashboard-heading">Top Travel Picks</h2>
+
+        <div class="card-scroll-container">
+            {% for place in places %}
+            <article class="travel-card" aria-labelledby="place-{{ loop.index }}-title">
+                <div class="card-image" 
+                     style="background-image: url('{{ url_for('static', filename=place.image) }}');"
+                     role="img"
+                     aria-label="{{ place.name }} destination image">
+                </div>
+                <div class="card-info">
+                    <h3 id="place-{{ loop.index }}-title">{{ place.name }}</h3>
+                    <p><strong>Duration:</strong> {{ place.duration }}</p>
+                    <p><strong>Activities:</strong> {{ place.activities }}</p>
+                    <a href="{{ place.link }}" class="card-btn">View More</a>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+
+        {% if not places %}
+        <p class="no-results">No travel destinations found. Please check back later!</p>
+        {% endif %}
+    </main>
+
+    <footer class="dashboard-footer" role="contentinfo">
+        <p>&copy; {{ now.year }} HealTrip. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>

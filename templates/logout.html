@@ -1,0 +1,19 @@
+<!-- templates/logout.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logged Out</title>
+</head>
+<body>
+    <h2>Thank you for using HealTrip 💚</h2>
+
+    <!-- Insert image -->
+    <img src="{{ url_for('static', filename='thankyou.jpeg') }}" alt="Thank You" width="300">
+
+    <p>You’ve been successfully logged out.</p>
+
+    <form action="/faq">
+        <button type="submit">FAQ About HealTrip</button>
+    </form>
+</body>
+</html>
